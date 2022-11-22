@@ -44,7 +44,7 @@ export const MENU = [
     },
     {
         name: 'Main Menu',
-        iconClasses: 'fas fa-folder',        
+        iconClasses: 'fas fa-folder',
         children: [
             {
                 name: 'Sub Menu',
@@ -57,5 +57,15 @@ export const MENU = [
                 path: ['/sub-menu-2']
             }
         ]
-    }
+    },
+    {
+      name: 'Projects',
+      iconClasses: 'fas fa-file',
+      path: ['/projects'],
+    },
+    {
+      name: 'Calendar',
+      iconClasses: 'fas fa-file',
+      path: ['/calendar'],
+    },
 ];

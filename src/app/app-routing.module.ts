@@ -12,6 +12,10 @@ import {ForgotPasswordComponent} from '@modules/forgot-password/forgot-password.
 import {RecoverPasswordComponent} from '@modules/recover-password/recover-password.component';
 import {MainMenuComponent} from '@pages/main-menu/main-menu.component';
 import {SubMenuComponent} from '@pages/main-menu/sub-menu/sub-menu.component';
+import { ProjectComponent } from '@pages/projects/project.component';
+import { DetailProjectComponent } from '@pages/projects/detail-project/detail-project.component';
+import { CalendarComponent } from '@pages/calendar/calendar.component';
+import { CreateEditProjectComponent } from '@pages/projects/create-edit-project/create-edit-project.component';
 
 const routes: Routes = [
     {
@@ -29,6 +33,10 @@ const routes: Routes = [
                 component: BlankComponent
             },
             {
+              path: 'projects',
+              component: ProjectComponent,
+            },
+            {
                 path: 'sub-menu-1',
                 component: SubMenuComponent
             },
@@ -39,6 +47,18 @@ const routes: Routes = [
             {
                 path: '',
                 component: DashboardComponent
+            },
+            {
+              path: 'detail-project',
+              component: DetailProjectComponent
+            },
+            {
+              path: 'create-edit-project',
+              component: CreateEditProjectComponent
+            },
+            {
+              path: 'calendar',
+              component: CalendarComponent
             }
         ]
     },

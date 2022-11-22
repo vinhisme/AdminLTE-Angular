@@ -35,9 +35,25 @@ import {uiReducer} from './store/ui/reducer';
 import {ProfabricComponentsModule} from '@profabric/angular-components';
 import {defineCustomElements} from '@profabric/web-components/loader';
 import { SidebarSearchComponent } from './components/sidebar-search/sidebar-search.component';
+import { ProjectComponent } from './pages/projects/project.component';
+import { DetailProjectComponent } from './pages/projects/detail-project/detail-project.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+import interactionPlugin from '@fullcalendar/interaction';
+import { CreateEditProjectComponent } from './pages/projects/create-edit-project/create-edit-project.component';
 
 defineCustomElements();
 registerLocaleData(localeEn, 'en-EN');
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin,
+  listPlugin,
+  interactionPlugin
+])
 
 @NgModule({
     declarations: [
@@ -61,7 +77,11 @@ registerLocaleData(localeEn, 'en-EN');
         SubMenuComponent,
         MenuItemComponent,
         ControlSidebarComponent,
-        SidebarSearchComponent
+        SidebarSearchComponent,
+        ProjectComponent,
+        DetailProjectComponent,
+        CalendarComponent,
+        CreateEditProjectComponent
     ],
     imports: [
         BrowserModule,
@@ -70,6 +90,7 @@ registerLocaleData(localeEn, 'en-EN');
         AppRoutingModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
+        FullCalendarModule,
         ToastrModule.forRoot({
             timeOut: 3000,
             positionClass: 'toast-top-right',

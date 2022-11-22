@@ -23,7 +23,14 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "assets": ["src/favicon.ico", "src/assets"],
-                        "styles": ["src/styles.scss"],
+                        "styles": [
+                          "src/styles.scss",
+                          "./node_modules/@fullcalendar/common/main.css",
+                          "./node_modules/@fullcalendar/daygrid/main.css",
+                          "./node_modules/@fullcalendar/timegrid/main.css",
+                          "./node_modules/@fullcalendar/list/main.css"
+
+                        ],
                         "scripts": [],
                         "vendorChunk": true,
                         "extractLicenses": false,
@@ -93,7 +100,13 @@
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
                         "assets": ["src/favicon.ico", "src/assets"],
-                        "styles": ["src/styles.scss"],
+                        "styles": [
+                          "src/styles.scss",
+                          "./node_modules/@fullcalendar/common/main.css",
+                          "./node_modules/@fullcalendar/daygrid/main.css",
+                          "./node_modules/@fullcalendar/timegrid/main.css",
+                          "./node_modules/@fullcalendar/list/main.css"
+                        ],
                         "scripts": []
                     }
                 },
