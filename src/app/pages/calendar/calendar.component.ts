@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/angular';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CalendarOptions, DateSelectArg, EventClickArg, EventApi, DayCellContent, DayCellRoot } from '@fullcalendar/angular';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
-
+import moment from 'moment';
 
 @Component({
   selector: 'app-calendar',
@@ -9,6 +9,8 @@ import { INITIAL_EVENTS, createEventId } from './event-utils';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
+  @Output('calendar') calendar: EventEmitter<any> = new EventEmitter();
+
   calendarVisible = true;
   calendarOptions: CalendarOptions = {
     headerToolbar: {
@@ -17,7 +19,7 @@ export class CalendarComponent implements OnInit {
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
     },
     initialView: 'dayGridMonth',
-    themeSystem: 'bootstrap',
+    themeSystem: 'themeSystem',
     initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
     weekends: true,
     timeZone: 'UTC',
@@ -29,7 +31,7 @@ export class CalendarComponent implements OnInit {
     dayMaxEvents: true,
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
-    eventsSet: this.handleEvents.bind(this)
+    eventsSet: this.handleEvents.bind(this),
     /* you can update a remote database when these fire:
     eventAdd:
     eventChange:
@@ -39,9 +41,8 @@ export class CalendarComponent implements OnInit {
   currentEvents: EventApi[] = [];
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit()  {
   }
-
 
   handleCalendarToggle() {
     this.calendarVisible = !this.calendarVisible;
@@ -67,8 +68,7 @@ export class CalendarComponent implements OnInit {
         allDay: selectInfo.allDay,
         color: this.getRandomColor(),
         minute: '2-digit',
-  omitZeroMinute: true,
-  meridiem: 'short',
+        meridiem: 'short',
         editable: true
       });
     }
